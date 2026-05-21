@@ -1,3 +1,3 @@
-﻿name;address;lat;lng;phone;email;website;eggs;milk;yoghurt;honey;vegetables;meat;cheese;alcohol;juice;fish
-Biohof Gruber;Hauptstraße 5;47.68;15.81;+43 664 1234567;info@gruber.at;www.gruber.at;1;;;1;1;;;;;
-Hof Leitner;Dorfstraße 2;47.70;15.84;+43 664 9876543;office@leitner.at;;;1;1;;;;1;1;;1
+﻿name,address,lat,lng,phone,email,website,eggs,milk,yoghurt,honey,vegetables,meat,cheese,alcohol,juice,fish
+Biohof Gruber,Hauptstraße 5,47.68,15.81,+43 664 1234567,info@gruber.at,www.gruber.at,1,0,0,1,1,0,0,0,0,0
+Hof Leitner,Dorfstraße 2,47.70,15.84,+43 664 9876543,office@leitner.at,0,0,1,1,0,0,0,1,1,0,1
