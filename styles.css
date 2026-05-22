@@ -1,4 +1,3 @@
-<style>
   :root {
     --cream: #f5f0e8;
     --ink: #1e1a14;
@@ -314,4 +313,3 @@
   .cards-list::-webkit-scrollbar { width: 4px; }
   .cards-list::-webkit-scrollbar-track { background: transparent; }
   .cards-list::-webkit-scrollbar-thumb { background: var(--mist); border-radius: 2px; }
-</style>
