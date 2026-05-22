@@ -1,3 +1,13 @@
 ﻿name,address,lat,lng,phone,email,website,eggs,milk,yoghurt,honey,vegetables,meat,cheese,alcohol,juice,fish
 Biohof Gruber,Hauptstraße 5,47.68,15.81,+43 664 1234567,info@gruber.at,www.gruber.at,1,0,0,1,1,0,0,0,0,0
 Hof Leitner,Dorfstraße 2,47.70,15.84,+43 664 9876543,office@leitner.at,0,0,1,1,0,0,0,1,1,0,1
+Bergbauernhof Steiner,Alpenweg 14,47.69,15.79,+43 664 1112233,info@steinerhof.at,www.steinerhof.at,1,1,0,0,1,0,1,0,0,0
+Obsthof Kern,Rosenallee 8,47.71,15.83,+43 664 2223344,office@obsthofkern.at,www.obsthofkern.at,0,0,0,1,1,0,0,0,1,0
+Fischzucht Moser,Teichgasse 3,47.73,15.88,+43 664 3334455,contact@moserfisch.at,www.moserfisch.at,0,0,0,0,0,0,0,0,0,1
+Hofgemeinschaft Wagner,Wiesenstraße 19,47.67,15.86,+43 664 4445566,info@wagnerhof.at,www.wagnerhof.at,1,1,1,0,1,1,1,0,0,0
+Imkerei Hofer,Waldweg 22,47.72,15.82,+43 664 5556677,honig@hofer.at,www.imkereihofer.at,0,0,0,1,0,0,0,0,0,0
+Mosterei Pichler,Kirchengasse 11,47.68,15.91,+43 664 6667788,office@pichlermost.at,www.pichlermost.at,0,0,0,0,0,0,0,1,1,0
+Biohof Auer,Feldweg 6,47.74,15.85,+43 664 7778899,service@auerbio.at,www.auerbio.at,1,0,0,1,1,1,0,0,0,0
+Almhof Reiter,Bergstraße 30,47.75,15.80,+43 664 8889900,info@almhofreiter.at,www.almhofreiter.at,0,1,1,0,0,1,1,0,0,0
+Gemüsehof Lindner,Gartenweg 9,47.70,15.89,+43 664 9990011,hallo@gemueselindner.at,www.gemueselindner.at,0,0,0,0,1,0,0,0,1,0
+Forellenhof Berger,Mühlweg 5,47.66,15.84,+43 664 1011122,office@forellenberger.at,www.forellenberger.at,0,0,0,0,0,0,0,0,0,1
