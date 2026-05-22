@@ -1,1 +1,317 @@
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --ink: #1e1a14;
+    --earth: #7a5c3a;
+    --sage: #6b7c5e;
+    --straw: #c9a84c;
+    --mist: #e8e2d6;
+    --rust: #b85c38;
+    --panel: #faf7f2;
+  }
 
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    height: 58px;
+    background: var(--ink);
+    flex-shrink: 0;
+    z-index: 1000;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    color: var(--cream);
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .logo-icon {
+    width: 28px; height: 28px;
+    background: var(--straw);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+
+  .header-sub {
+    font-size: 0.78rem;
+    color: #9a9082;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .load-btn {
+    background: transparent;
+    border: 1px solid #4a4035;
+    color: #c8b89a;
+    padding: 6px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 3px;
+  }
+  .load-btn:hover { background: #2e2820; color: var(--cream); }
+  #csvInput { display: none; }
+
+  /* ── FILTER BAR ── */
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 28px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--mist);
+    flex-shrink: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .filter-bar::-webkit-scrollbar { display: none; }
+
+  .filter-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--earth);
+    font-weight: 500;
+    white-space: nowrap;
+    margin-right: 4px;
+  }
+
+  .chip {
+    padding: 5px 13px;
+    border-radius: 20px;
+    border: 1.5px solid var(--mist);
+    background: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    color: #5a5040;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.18s;
+    font-weight: 400;
+  }
+  .chip:hover { border-color: var(--sage); color: var(--sage); }
+  .chip.active {
+    background: var(--sage);
+    border-color: var(--sage);
+    color: white;
+    font-weight: 500;
+  }
+  .chip-all.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: white;
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: 340px;
+    flex-shrink: 0;
+    background: var(--panel);
+    border-right: 1px solid var(--mist);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .sidebar-header {
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid var(--mist);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .sidebar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+
+  .count-badge {
+    font-size: 0.75rem;
+    color: #9a8c7a;
+    font-weight: 300;
+  }
+
+  .cards-list {
+    overflow-y: auto;
+    flex: 1;
+    padding: 10px 12px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--mist) transparent;
+  }
+
+  .farm-card {
+    background: white;
+    border: 1.5px solid var(--mist);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 9px;
+    cursor: pointer;
+    transition: all 0.18s;
+    position: relative;
+  }
+  .farm-card:hover, .farm-card.active {
+    border-color: var(--sage);
+    box-shadow: 0 2px 12px rgba(107,124,94,0.12);
+  }
+  .farm-card.active { border-color: var(--earth); }
+
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .card-address {
+    font-size: 0.76rem;
+    color: #9a8c7a;
+    font-weight: 300;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .tag {
+    font-size: 0.68rem;
+    padding: 2px 8px;
+    background: #f0ede6;
+    border-radius: 10px;
+    color: var(--earth);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: capitalize;
+  }
+
+  .card-contact {
+    margin-top: 8px;
+    font-size: 0.74rem;
+    color: var(--sage);
+    font-weight: 400;
+  }
+  .card-contact a { color: var(--sage); text-decoration: none; }
+  .card-contact a:hover { text-decoration: underline; }
+
+  .no-results {
+    text-align: center;
+    padding: 60px 20px;
+    color: #b0a898;
+    font-size: 0.85rem;
+    font-style: italic;
+  }
+
+  /* ── MAP ── */
+  #map {
+    flex: 1;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+  }
+
+  /* ── LEAFLET OVERRIDES ── */
+  .leaflet-popup-content-wrapper {
+    border-radius: 8px;
+    border: 1.5px solid var(--mist);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    font-family: 'DM Sans', sans-serif;
+    padding: 0;
+    overflow: hidden;
+  }
+  .leaflet-popup-content { margin: 0; width: 220px !important; }
+  .popup-inner { padding: 14px 16px; }
+  .popup-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .popup-addr { font-size: 0.75rem; color: #9a8c7a; font-style: italic; margin-bottom: 8px; }
+  .popup-tags { display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 8px; }
+  .popup-contact { font-size: 0.74rem; color: var(--sage); }
+  .popup-contact a { color: var(--sage); }
+
+  .leaflet-popup-tip { background: white; }
+
+  /* Custom marker */
+  .farm-marker {
+    width: 32px; height: 32px;
+    background: var(--sage);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    border: 2.5px solid white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .farm-marker.active {
+    background: var(--earth);
+    transform: rotate(-45deg) scale(1.2);
+  }
+  .farm-marker:hover { background: var(--straw); }
+
+  /* ── EMPTY STATE ── */
+  .empty-state {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 500;
+    pointer-events: none;
+  }
+  .empty-icon { font-size: 3rem; margin-bottom: 12px; opacity: 0.4; }
+  .empty-text { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--earth); opacity: 0.6; }
+  .empty-sub { font-size: 0.8rem; color: #b0a898; margin-top: 6px; font-style: italic; }
+
+  /* ── DEMO BANNER ── */
+  .demo-banner {
+    background: var(--straw);
+    color: var(--ink);
+    text-align: center;
+    font-size: 0.76rem;
+    padding: 5px;
+    letter-spacing: 0.03em;
+  }
+  .demo-banner strong { font-weight: 600; }
+
+  /* ── SCROLLBAR ── */
+  .cards-list::-webkit-scrollbar { width: 4px; }
+  .cards-list::-webkit-scrollbar-track { background: transparent; }
+  .cards-list::-webkit-scrollbar-thumb { background: var(--mist); border-radius: 2px; }
+</style>
