@@ -1,6 +1,3 @@
-<script>
-
-
 
 // ── STATE ──────────────────────────────────────────────────────────────────
 let farms = [];
@@ -257,6 +254,3 @@ function splitCSVLine(line) {
   result.push(cur);
   return result;
 }
-
-
-</script>
