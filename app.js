@@ -61,7 +61,8 @@ function buildFilters() {
   farms.forEach(f => {
     f.products.map(p => p.trim()).filter(Boolean).forEach(p => allProducts.add(p));
   });
-  [...allProducts].sort().forEach(p => {
+   const orderedProducts = Object.keys(PRODUCT_LABELS).filter(p => allProducts.has(p));
+  orderedProducts.forEach(p => {
     const btn = document.createElement('button');
     btn.className = 'chip';
     btn.textContent = PRODUCT_LABELS[p] || p;
