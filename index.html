@@ -468,6 +468,9 @@ function renderAll(subset) {
 }
 
 function cardHTML(f) {
+    const tags = f.products.map(p =>
+    `<span class="tag">${PRODUCT_LABELS[p] || p}</span>`
+  ).join('');
   const contact = [];
   if (f.phone) contact.push(`<span> ${f.phone}</span>`);
   if (f.email) contact.push(`<a href="mailto:${f.email}"> ${f.email}</a>`);
@@ -481,6 +484,9 @@ function cardHTML(f) {
 }
 
 function popupHTML(f) {
+    const tags = f.products.map(p =>
+    `<span class="tag">${PRODUCT_LABELS[p] || p}</span>`
+  ).join('');
   const contact = [];
   if (f.phone) contact.push(f.phone);
   if (f.email) contact.push(`<a href="mailto:${f.email}">${f.email}</a>`);
