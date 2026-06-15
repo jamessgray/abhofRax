@@ -194,6 +194,14 @@
     margin-bottom: 4px;
   }
 
+.card-name.bio {
+  color: var(--sage);
+  }
+
+.popup-name.bio {
+  color: var(--sage);
+  }
+
   .card-address {
     font-size: 0.76rem;
     color: #9a8c7a;
