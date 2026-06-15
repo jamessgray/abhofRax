@@ -1,12 +1,12 @@
 
-// ── STATE ────────────────────────────────────────────────────────────────────────
+// ── STATE ────────────────────────────────────────────────────────────
 let farms = [];
 let markers = {};
 let activeFilter = null;
 let activeCard = null;
 let map;
 
-// ── MAP INIT ───────────────────────────────────────────────────────────────────
+// ── MAP INIT ───────────────────────────────────────────────────────────
 window.addEventListener('DOMContentLoaded', () => {
   map = L.map('map', { zoomControl: true }).setView([48.35, 15.90], 11);
 
@@ -34,7 +34,7 @@ async function loadCSVFile(path) {
   }
 }
 
-// ── LOAD & RENDER ─────────────────────────────────────────────────────────────────
+// ── LOAD & RENDER ─────────────────────────────────────────────────────────
 function loadData(data) {
   farms = data;
   clearAll();
@@ -151,7 +151,7 @@ const PRODUCT_LABELS = {
 
 
 
-// ── SELECT ───────────────────────────────────────────────────────────────────────
+// ── SELECT ───────────────────────────────────────────────────────────
 function selectFarm(farm, i) {
   // Deselect old
   if (activeCard !== null) {
@@ -170,11 +170,11 @@ function selectFarm(farm, i) {
   const icon = document.getElementById(`marker-icon-${i}`);
   if (icon) icon.classList.add('active');
 
-  map.setView([farm.lat, farm.lng], 14, { animate: true });
+  map.setView([farm.lat, farm.lng], 15, { animate: true });
   markers[i].openPopup();
 }
 
-// ── FILTER ───────────────────────────────────────────────────────────────────────
+// ── FILTER ───────────────────────────────────────────────────────────
 function filterAll(btn) {
   activeFilter = null;
   document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
@@ -198,12 +198,23 @@ function filterByProduct(product, btn) {
   if (filtered.length) fitMap(filtered);
 }
 
+function filterByBio(btn) {
+  activeFilter = 'bio';
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  Object.values(markers).forEach(m => map.removeLayer(m));
+  markers = {};
+  const filtered = farms.filter(f => f.bio === '1');
+  renderAll(filtered);
+  if (filtered.length) fitMap(filtered);
+}
+
 function fitMap(subset) {
   const bounds = L.latLngBounds(subset.map(f => [f.lat, f.lng]));
   map.fitBounds(bounds, { padding: [40, 40] });
 }
 
-// ── CSV LOADING ─────────────────────────────────────────────────────────────────
+// ── CSV LOADING ─────────────────────────────────────────────────────────
 function loadCSV(event) {
   const file = event.target.files[0];
   if (!file) return;
