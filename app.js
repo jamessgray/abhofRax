@@ -1,12 +1,12 @@
 
-// ── STATE ──────────────────────────────────────────────────────────────────
+// ── STATE ────────────────────────────────────────────────────────────────────────
 let farms = [];
 let markers = {};
 let activeFilter = null;
 let activeCard = null;
 let map;
 
-// ── MAP INIT ───────────────────────────────────────────────────────────────
+// ── MAP INIT ───────────────────────────────────────────────────────────────────
 window.addEventListener('DOMContentLoaded', () => {
   map = L.map('map', { zoomControl: true }).setView([48.35, 15.90], 11);
 
@@ -34,7 +34,7 @@ async function loadCSVFile(path) {
   }
 }
 
-// ── LOAD & RENDER ──────────────────────────────────────────────────────────
+// ── LOAD & RENDER ─────────────────────────────────────────────────────────────────
 function loadData(data) {
   farms = data;
   clearAll();
@@ -110,9 +110,9 @@ function cardHTML(f) {
   if (f.phone) contact.push(`<span> ${f.phone}</span>`);
   if (f.email) contact.push(`<a href="mailto:${f.email}"> ${f.email}</a>`);
   if (f.website) contact.push(`<a href="https://${f.website}" target="_blank"> ${f.website}</a>`);
-  const bioClass = f.bio === '1' ? 'bio' : '';
+  const bioLabel = f.bio === '1' ? '<span class="bio-label">bio</span>' : '';
   return `
-    <div class="card-name ${bioClass}">${f.name}</div>
+    <div class="card-name">${f.name}${bioLabel}</div>
     <div class="card-address">${f.address}</div>
     <div class="card-tags">${tags}</div>
     ${contact.length ? `<div class="card-contact">${contact.join(' · ')}</div>` : ''}
@@ -127,9 +127,9 @@ function popupHTML(f) {
   if (f.phone) contact.push(f.phone);
   if (f.email) contact.push(`<a href="mailto:${f.email}">${f.email}</a>`);
   if (f.website) contact.push(`<a href="https://${f.website}" target="_blank">${f.website}</a>`);
-  const bioClass = f.bio === '1' ? 'bio' : '';
+  const bioLabel = f.bio === '1' ? '<span class="bio-label">bio</span>' : '';
   return `<div class="popup-inner">
-    <div class="popup-name ${bioClass}">${f.name}</div>
+    <div class="popup-name">${f.name}${bioLabel}</div>
     <div class="popup-addr">${f.address}</div>
     <div class="popup-tags">${tags}</div>
     ${contact.length ? `<div class="popup-contact">${contact.join('<br>')}</div>` : ''}
@@ -151,7 +151,7 @@ const PRODUCT_LABELS = {
 
 
 
-// ── SELECT ─────────────────────────────────────────────────────────────────
+// ── SELECT ───────────────────────────────────────────────────────────────────────
 function selectFarm(farm, i) {
   // Deselect old
   if (activeCard !== null) {
@@ -174,7 +174,7 @@ function selectFarm(farm, i) {
   markers[i].openPopup();
 }
 
-// ── FILTER ─────────────────────────────────────────────────────────────────
+// ── FILTER ───────────────────────────────────────────────────────────────────────
 function filterAll(btn) {
   activeFilter = null;
   document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
@@ -203,7 +203,7 @@ function fitMap(subset) {
   map.fitBounds(bounds, { padding: [40, 40] });
 }
 
-// ── CSV LOADING ────────────────────────────────────────────────────────────
+// ── CSV LOADING ─────────────────────────────────────────────────────────────────
 function loadCSV(event) {
   const file = event.target.files[0];
   if (!file) return;
@@ -238,7 +238,7 @@ function parseCSV(text) {
       phone: obj.phone || obj.tel || '',
       email: obj.email || '',
       website: obj.website || obj.web || '',
-
+      bio: obj.bio || '',
      products: Object.keys(PRODUCT_LABELS)
     .filter(key => obj[key] === '1')
 
