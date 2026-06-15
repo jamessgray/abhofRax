@@ -192,14 +192,18 @@
     font-size: 0.95rem;
     color: var(--ink);
     margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 
-.card-name.bio {
-  color: var(--meadow);
-  }
-
-.popup-name.bio {
-  color: var(--meadow);
+  .bio-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--meadow);
+    text-transform: lowercase;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.05em;
   }
 
   .card-address {
@@ -269,6 +273,9 @@
     font-size: 1rem;
     color: var(--ink);
     margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
   .popup-addr { font-size: 0.75rem; color: #9a8c7a; font-style: italic; margin-bottom: 8px; }
   .popup-tags { display: flex; flex-wrap: wrap; gap: 3px; margin-bottom: 8px; }
