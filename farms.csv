@@ -1,6 +1,6 @@
 ﻿name,bio,address,lat,lng,phone,email,website,eggs,milk,yoghurt,honey,vegetables,meat,cheese,alcohol,juice,fish
 Biohof Gruber,1,Hauptstraße 5,47.68,15.81,+43 664 1234567,info@gruber.at,www.gruber.at,1,0,0,1,1,0,0,0,0,0
-Hof Leitner,0,Dorfstraße 2,47.70,15.84,+43 664 9876543,office@leitner.at,,0,0,1,1,0,0,0,1,1,0,1
+Hof Leitner,0,Dorfstraße 2,47.70,15.84,+43 664 9876543,office@leitner.at,,0,1,1,0,0,0,1,1,0,1
 Bergbauernhof Steiner,,Alpenweg 14,47.69,15.79,+43 664 1112233,info@steinerhof.at,www.steinerhof.at,1,1,0,0,1,0,1,0,0,0
 Obsthof Kern,1,Rosenallee 8,47.71,15.83,+43 664 2223344,office@obsthofkern.at,www.obsthofkern.at,0,0,0,1,1,0,0,0,1,0
 Fischzucht Moser,0,Teichgasse 3,47.73,15.88,+43 664 3334455,contact@moserfisch.at,www.moserfisch.at,0,0,0,0,0,0,0,0,0,1
