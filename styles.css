@@ -193,7 +193,7 @@
     color: var(--ink);
     margin-bottom: 4px;
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 6px;
   }
 
@@ -204,6 +204,7 @@
     text-transform: lowercase;
     font-family: 'DM Sans', sans-serif;
     letter-spacing: 0.05em;
+    line-height: 1;
   }
 
   .card-address {
@@ -274,7 +275,7 @@
     color: var(--ink);
     margin-bottom: 4px;
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 6px;
   }
   .popup-addr { font-size: 0.75rem; color: #9a8c7a; font-style: italic; margin-bottom: 8px; }
