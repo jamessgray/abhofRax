@@ -110,8 +110,9 @@ function cardHTML(f) {
   if (f.phone) contact.push(`<span> ${f.phone}</span>`);
   if (f.email) contact.push(`<a href="mailto:${f.email}"> ${f.email}</a>`);
   if (f.website) contact.push(`<a href="https://${f.website}" target="_blank"> ${f.website}</a>`);
+  const bioClass = f.bio === '1' ? 'bio' : '';
   return `
-    <div class="card-name">${f.name}</div>
+    <div class="card-name ${bioClass}">${f.name}</div>
     <div class="card-address">${f.address}</div>
     <div class="card-tags">${tags}</div>
     ${contact.length ? `<div class="card-contact">${contact.join(' · ')}</div>` : ''}
@@ -126,8 +127,9 @@ function popupHTML(f) {
   if (f.phone) contact.push(f.phone);
   if (f.email) contact.push(`<a href="mailto:${f.email}">${f.email}</a>`);
   if (f.website) contact.push(`<a href="https://${f.website}" target="_blank">${f.website}</a>`);
+  const bioClass = f.bio === '1' ? 'bio' : '';
   return `<div class="popup-inner">
-    <div class="popup-name">${f.name}</div>
+    <div class="popup-name ${bioClass}">${f.name}</div>
     <div class="popup-addr">${f.address}</div>
     <div class="popup-tags">${tags}</div>
     ${contact.length ? `<div class="popup-contact">${contact.join('<br>')}</div>` : ''}
