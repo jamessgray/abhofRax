@@ -5,6 +5,7 @@ let markers = {};
 let activeFilter = null;
 let activeCard = null;
 let map;
+let farmMarkersMap = {}; // Map farm name to marker for proper centering
 
 // ── MAP INIT ───────────────────────────────────────────────────────────
 window.addEventListener('DOMContentLoaded', () => {
@@ -46,6 +47,7 @@ function loadData(data) {
 function clearAll() {
   Object.values(markers).forEach(m => map.removeLayer(m));
   markers = {};
+  farmMarkersMap = {};
   document.getElementById('cardsList').innerHTML = '';
   // reset filter chips except first three (label, "Alle Höfe", "Bio Betriebe")
   const bar = document.getElementById('filterBar');
@@ -99,6 +101,7 @@ function renderAll(subset) {
     marker.bindPopup(popupHTML(farm));
     marker.on('click', () => selectFarm(farm, i));
     markers[i] = marker;
+    farmMarkersMap[farm.name] = marker;
   });
 }
 
@@ -170,8 +173,12 @@ function selectFarm(farm, i) {
   const icon = document.getElementById(`marker-icon-${i}`);
   if (icon) icon.classList.add('active');
 
-  map.setView([farm.lat, farm.lng], 15, { animate: true });
-  markers[i].openPopup();
+  // Use farm object to find the correct marker and center on it
+  const marker = farmMarkersMap[farm.name];
+  if (marker) {
+    map.setView(marker.getLatLng(), 15, { animate: true });
+    marker.openPopup();
+  }
 }
 
 // ── FILTER ───────────────────────────────────────────────────────────
