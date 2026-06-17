@@ -47,9 +47,9 @@ function clearAll() {
   Object.values(markers).forEach(m => map.removeLayer(m));
   markers = {};
   document.getElementById('cardsList').innerHTML = '';
-  // reset filter chips except first two
+  // reset filter chips except first three (label, "Alle Höfe", "Bio Betriebe")
   const bar = document.getElementById('filterBar');
-  while (bar.children.length > 2) bar.removeChild(bar.lastChild);
+  while (bar.children.length > 3) bar.removeChild(bar.lastChild);
   activeFilter = null;
   activeCard = null;
   document.querySelector('.chip-all').classList.add('active');
